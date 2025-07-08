@@ -261,6 +261,20 @@ function gameLoop() {
   requestAnimationFrame(gameLoop);
 }
 
+
+// === Mobilní zrychlení ==========================================================
+const isMobile = window.innerWidth < 600 || /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+if (isMobile) {
+  // Zvýšená rychlost pro mobilní zařízení
+  player.speed = 3;
+  player.jumpForce = -13;
+  player.gravity = 0.3;
+  enemy.speed = 0.045;
+  console.log("Zvýšená rychlost pro mobil");
+}
+
+
 playerImage.onload = () => gameLoop();
 
 // === Dotykové ovládání ===================================================
