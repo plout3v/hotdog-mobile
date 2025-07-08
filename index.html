@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Zabraň přibližování a zajisti responsivitu -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Gašpiho hra</title>
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      background: #111;
+      color: white;
+      touch-action: manipulation; /* lepší chování na mobilech */
+    }
+
+    /* Responsivní plátno – zachová poměr 4:3, ale zmenší se podle šířky displeje */
+    canvas {
+      border: 3px solid white;
+      margin-top: 10px;
+      width: 100%;
+      height: auto;
+      max-width: 800px;   /* na větších displejích drž 800 px */
+    }
+
+    /* Dotyková tlačítka ukotvená dole */
+    #touchControls {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      z-index: 10;
+    }
+    #touchControls button {
+      font-size: 28px;
+      padding: 10px 20px;
+      margin: 0;
+      border-radius: 12px;
+      background: #333;
+      color: #fafafa;
+      border: 2px solid #fafafa;
+    }
+    #touchControls button:active {
+      background: #555;
+    }
+  </style>
+
+  <!-- Všechnu logiku přesunutou do externího souboru načteme až po načtení DOMu -->
+  <script src="game.js" defer></script>
+</head>
+<body>
+
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <!-- Ovládací tlačítka pro dotyk -->
+  <div id="touchControls">
+    <button id="leftBtn">⬅️</button>
+    <button id="jumpBtn">⏫</button>
+    <button id="rightBtn">➡️</button>
+    <button id="shootBtn">🔫</button>
+  </div>
+
+</body>
+</html>
